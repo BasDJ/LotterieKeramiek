@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotterie Keramiek - Handgemaakt Keramiek</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #f8f5f0;
+            --warm-gray: #9a8b7a;
+            --dark-brown: #4a3f35;
+            --light-taupe: #d4c5b5;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--cream);
+            color: var(--dark-brown);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(248, 245, 240, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--light-taupe);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark-brown);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-brown);
+            font-weight: 400;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--warm-gray);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 2px;
+            background: var(--dark-brown);
+            transition: 0.3s;
+        }
+
+        /* ============================================
+           DESKTOP VERSION (769px and up)
+           ============================================ */
+
+        /* Hero Section - Desktop */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            background: linear-gradient(135deg, rgba(74, 63, 53, 0.4) 0%, rgba(74, 63, 53, 0.2) 100%),
+                        url('hero-desktop/heroDesktop.jpg') center/cover;
+            text-align: left;
+            padding: 6rem 4rem;
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .hero-content {
+            color: var(--white);
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 4px;
+            font-weight: 400;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            color: var(--cream);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero-divider {
+            width: 80px;
+            height: 3px;
+            background: var(--cream);
+            margin: 2rem 0;
+            opacity: 0.8;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--cream);
+            opacity: 0.95;
+        }
+
+        /* Sections General */
+        section {
+            padding: 6rem 3rem;
+            max-width: 100%;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        section.hero {
+            padding: 6rem 3rem;
+            margin-bottom: 0;
+        }
+
+        .section-content {
+            width: 100%;
+            max-width: none;
+            margin: 0 auto;
+        }
+
+        section.about {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding: 6rem 3rem;
+        }
+
+        section.stappen {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding: 6rem 3rem;
+        }
+
+        section.showcase {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding: 6rem 3rem;
+        }
+
+        section.contact {
+            margin-top: 0;
+            padding: 6rem 3rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 3rem;
+            color: var(--dark-brown);
+        }
+
+        /* About Section */
+        .about {
+            background: var(--white);
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            color: var(--warm-gray);
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        /* Showcase Section */
+        .showcase {
+            background: var(--cream);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: none;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(74, 63, 53, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--white);
+            width: 100%;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(74, 63, 53, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-caption {
+            padding: 1rem 1.5rem;
+            background: var(--white);
+        }
+
+        .gallery-caption h3 {
+            font-size: 1.1rem;
+            color: var(--dark-brown);
+            margin-bottom: 0.3rem;
+        }
+
+        /* Gallery Carousel Styles */
+        .gallery-carousel {
+            position: relative;
+            width: 100%;
+        }
+
+        .carousel-arrow {
+            display: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--dark-brown);
+            color: var(--white);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: background 0.3s ease;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-arrow:hover {
+            background: var(--warm-gray);
+        }
+
+        .carousel-prev {
+            left: -25px;
+        }
+
+        .carousel-next {
+            right: -25px;
+        }
+
+        /* Stappen Carousel Container */
+        .stappen-carousel {
+            position: relative;
+            width: 100%;
+        }
+
+        /* Stappen Section */
+        .stappen {
+            background: var(--white);
+        }
+
+        .stappen-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .stap-card {
+            background: var(--cream);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(74, 63, 53, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stap-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(74, 63, 53, 0.2);
+        }
+
+        .stap-number {
+            background: var(--dark-brown);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin: 1.5rem auto 1rem;
+        }
+
+        .stap-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .stap-content {
+            padding: 0 1.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .stap-content h3 {
+            font-size: 1.1rem;
+            color: var(--dark-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .stap-content p {
+            font-size: 0.9rem;
+            color: var(--warm-gray);
+            line-height: 1.5;
+        }
+        .contact {
+            background: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--dark-brown);
+        }
+
+        .contact-info p {
+            color: var(--warm-gray);
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-details h4 {
+            font-size: 1rem;
+            color: var(--dark-brown);
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-details a {
+            color: var(--warm-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: var(--dark-brown);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-brown);
+            color: var(--cream);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        /* ============================================
+           MOBILE VERSION (768px and below)
+           ============================================ */
+        @media (max-width: 768px) {
+            /* Mobile Navigation */
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--cream);
+                flex-direction: column;
+                padding: 1rem;
+                border-bottom: 1px solid var(--light-taupe);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            /* Mobile Hero - COMPLETELY DIFFERENT from desktop */
+            .hero {
+                min-height: 70vh;
+                justify-content: center;
+                text-align: center;
+                padding: 5rem 1.5rem 3rem;
+                background: var(--cream);
+            }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('hero-mobile/heroPhone.jpg') center/cover;
+                opacity: 0.25;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                background: rgba(248, 245, 240, 0.9);
+                padding: 2rem;
+                border-radius: 12px;
+                backdrop-filter: blur(5px);
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+                letter-spacing: 2px;
+                color: var(--dark-brown);
+                text-shadow: none;
+                margin-bottom: 0.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+                letter-spacing: 2px;
+                color: var(--warm-gray);
+                margin-bottom: 1rem;
+            }
+
+            .hero-divider {
+                width: 50px;
+                height: 2px;
+                background: var(--warm-gray);
+                margin: 1.5rem auto;
+            }
+
+            .hero-tagline {
+                font-size: 1rem;
+                color: var(--dark-brown);
+                opacity: 1;
+            }
+
+            .stappen-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+
+            .stap-card img {
+                height: 180px;
+            }
+
+            .stap-number {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+
+        /* Mobile Stappen Carousel */
+        .stappen-grid {
+            display: flex;
+            overflow-x: hidden;
+            gap: 0;
+        }
+
+        .stap-card {
+            flex: 0 0 100%;
+            display: none;
+        }
+
+        .stap-card.active {
+            display: block;
+        }
+
+        .stap-card img {
+            height: 250px;
+        }
+
+        .stappen-carousel {
+            padding: 0 40px;
+        }
+
+        .stappen-prev, .stappen-next {
+            display: flex;
+        }
+
+        .stappen-prev {
+            left: 0;
+        }
+
+        .stappen-next {
+            right: 0;
+        }
+
+            section.about, section.stappen, section.showcase {
+                margin-top: 3rem;
+                margin-bottom: 3rem;
+            }
+
+            section.contact {
+                margin-top: 3rem;
+            }
+
+        /* Mobile Gallery Carousel */
+        .gallery {
+            display: flex;
+            overflow-x: hidden;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            gap: 0;
+        }
+
+        .gallery-item {
+            flex: 0 0 100%;
+            scroll-snap-align: start;
+            display: none;
+        }
+
+        .gallery-item.active {
+            display: block;
+        }
+
+        .carousel-arrow {
+            display: flex;
+        }
+
+        .gallery-item img {
+            height: 300px;
+        }
+
+        .gallery-carousel {
+            padding: 0 40px;
+        }
+
+        .carousel-prev {
+            left: 0;
+        }
+
+        .carousel-next {
+            right: 0;
+        }
+
+            .gallery-item img {
+                height: 250px;
+            }
+
+            .about-content {
+                padding: 0 1rem;
+            }
+
+            .contact-grid {
+                padding: 0 1rem;
+            }
+
+            /* Mobile Sections */
+            section {
+                padding: 3rem 1rem;
+                max-width: 100%;
+            }
+
+            section.hero {
+                padding: 5rem 1rem 3rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 0 1rem;
+            }
+
+            .about-content {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .stappen-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stap-card img {
+                height: 220px;
+            }
+
+            .gallery-item img {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Lotterie Keramiek</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Over</a></li>
+            <li><a href="#stappen">Proces</a></li>
+            <li><a href="#showcase">Collectie</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-menu" id="mobileMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Lotterie Keramiek</h1>
+            <p class="hero-subtitle">Handgemaakt met passie en precisie</p>
+            <div class="hero-divider"></div>
+            <p class="hero-tagline">Unieke keramische stukken voor jouw interieur</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title">Over Lotterie Keramiek</h2>
+        <div class="about-content">
+            <p>Welkom bij Lotterie Keramiek, waar ambacht en creativiteit samenkomen. Elk stuk wordt met de hand vervaardigd in onze atelier, met aandacht voor detail en een liefde voor het vak.</p>
+            <p>Van functioneel servies tot decoratieve objecten - onze collectie biedt unieke keramische stukken die karakter en warmte toevoegen aan elk interieur. Elk werk is uniek, met zijn eigen verhaal en karakteristieke eigenschappen.</p>
+        </div>
+    </section>
+
+    <!-- Stappen Section -->
+    <section class="stappen" id="stappen">
+        <h2 class="section-title">Het Proces</h2>
+        <div class="stappen-carousel">
+            <button class="carousel-arrow stappen-prev" aria-label="Vorige stap">&#10094;</button>
+            <div class="stappen-grid">
+                <div class="stap-card" data-stap="0">
+                    <div class="stap-number">1</div>
+                    <img src="stappen/stap1.jpg" alt="Stap 1 - Voorbereiding">
+                    <div class="stap-content">
+                        <h3>Voorbereiding</h3>
+                        <p>Het creëren van het ontwerp en de voorbereiding van de klei</p>
+                    </div>
+                </div>
+
+                <div class="stap-card" data-stap="1">
+                    <div class="stap-number">2</div>
+                    <img src="stappen/stap2.jpg" alt="Stap 2 - Vormgeving">
+                    <div class="stap-content">
+                        <h3>Vormgeving</h3>
+                        <p>Handmatig draaien en vormgeven van het keramiek</p>
+                    </div>
+                </div>
+
+                <div class="stap-card" data-stap="2">
+                    <div class="stap-number">3</div>
+                    <img src="stappen/stap3.jpg" alt="Stap 3 - Droging">
+                    <div class="stap-content">
+                        <h3>Droging</h3>
+                        <p>Natuurlijk laten drogen tot het juiste vochtgehalte</p>
+                    </div>
+                </div>
+
+                <div class="stap-card" data-stap="3">
+                    <div class="stap-number">4</div>
+                    <img src="stappen/stap4.jpg" alt="Stap 4 - Bakken">
+                    <div class="stap-content">
+                        <h3>Glazuren & Bakken</h3>
+                        <p>De hoogtepunten: glazuren en het bakken in de oven</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-arrow stappen-next" aria-label="Volgende stap">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- Showcase Section -->
+    <section class="showcase" id="showcase">
+        <h2 class="section-title">Onze Collectie</h2>
+        <div class="gallery-carousel">
+            <button class="carousel-arrow carousel-prev" aria-label="Vorige foto">&#10094;</button>
+            <div class="gallery">
+                <!-- Gallery items - easily add more by copying this block -->
+                <div class="gallery-item" data-index="0">
+                    <img src="collectie/foto1.jpg" alt="Collectie item 1">
+                    <div class="gallery-caption">
+                        <h3>Dienborden & Schalen</h3>
+                        <p>Glazen keramiek in warme, natuurlijke tinten</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-index="1">
+                    <img src="collectie/foto2.jpg" alt="Collectie item 2">
+                    <div class="gallery-caption">
+                        <h3>Het Bakproces</h3>
+                        <p>Een kijkje in onze keramiekoven</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-index="2">
+                    <img src="collectie/foto3.jpg" alt="Collectie item 3">
+                    <div class="gallery-caption">
+                        <h3>Decoratieve Hangers</h3>
+                        <p>Handgemaakte keramieke cadeaulabels met hartje</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-index="3">
+                    <img src="collectie/foto4.jpg" alt="Collectie item 4">
+                    <div class="gallery-caption">
+                        <h3>Sfeerverlichting</h3>
+                        <p>Keramieke waxinelichthouders voor een warme ambiance</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-arrow carousel-next" aria-label="Volgende foto">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Neem Contact Op</h3>
+                <p>Interesse in een van onze stukken of wil je meer informatie? Neem gerust contact met ons op!</p>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">✉</div>
+                    <div class="contact-details">
+                        <h4>Email</h4>
+                        <a href="mailto:info@lotteriekeramiek.nl">info@lotteriekeramiek.nl</a>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <div class="contact-icon">☎</div>
+                    <div class="contact-details">
+                        <h4>Telefoon</h4>
+                        <a href="tel:+31612345678">+31 6 12345678</a>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <div class="contact-icon">📷</div>
+                    <div class="contact-details">
+                        <h4>Instagram</h4>
+                        <a href="https://instagram.com/lotteriekeramiek" target="_blank">@lotteriekeramiek</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <h3>Bezoek Ons</h3>
+                <p>Ons atelier is te bezoeken op afspraak. Kom langs om onze collectie in het echt te bewonderen!</p>
+                <p style="margin-top: 1.5rem; font-style: italic; color: var(--light-taupe);">
+                    Atelier Lotterie<br>
+                    Voorbeeldstraat 123<br>
+                    1234 AB Amsterdam
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Lotterie Keramiek. Alle rechten voorbehouden.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Gallery Carousel functionality
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const prevBtn = document.querySelector('.carousel-prev');
+        const nextBtn = document.querySelector('.carousel-next');
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            galleryItems.forEach((item, i) => {
+                item.classList.remove('active');
+                if (i === index) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % galleryItems.length;
+            showSlide(currentIndex);
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+            showSlide(currentIndex);
+        }
+
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+        }
+
+        // Stappen Carousel functionality
+        const stapCards = document.querySelectorAll('.stap-card');
+        const stapPrevBtn = document.querySelector('.stappen-prev');
+        const stapNextBtn = document.querySelector('.stappen-next');
+        let currentStap = 0;
+
+        function showStap(index) {
+            stapCards.forEach((card, i) => {
+                card.classList.remove('active');
+                if (i === index) {
+                    card.classList.add('active');
+                }
+            });
+        }
+
+        function nextStap() {
+            currentStap = (currentStap + 1) % stapCards.length;
+            showStap(currentStap);
+        }
+
+        function prevStap() {
+            currentStap = (currentStap - 1 + stapCards.length) % stapCards.length;
+            showStap(currentStap);
+        }
+
+        if (stapPrevBtn && stapNextBtn) {
+            stapPrevBtn.addEventListener('click', prevStap);
+            stapNextBtn.addEventListener('click', nextStap);
+        }
+
+        // Initialize first stap
+        showStap(0);
+
+        // Initialize first slide
+        showSlide(0);
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
